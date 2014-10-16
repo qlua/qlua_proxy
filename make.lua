@@ -12,7 +12,7 @@ print("Writing header ...")
 out_file = io.open("qlua_proxy.cpp", "w+t")
 assert(out_file)
 out_file:write([[#define APP_NAME	"QLUA PROXY"
-#define APP_VERSION	"1.0"
+#define APP_VERSION	"2.0"
 
 #define WIN32_LEAN_AND_MEAN
 #include <windows.h>
@@ -30,6 +30,7 @@ end
 out_file:write("\n}qlua;\n")
 
 print("Writing stub function definition ...")
+out_file:write("int is_proxy_dll(void){ return 1;}\n")
 for line in io.lines("temp_qlua.def") do
 	out_file:write(string.format("__declspec(naked) void %s(){_asm { jmp [qlua._%s] }}\n", line, line))
 end

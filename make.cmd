@@ -11,6 +11,7 @@ lua make.lua
 @echo builing ...
 @echo LIBRARY "qlua_proxy" >qlua.def
 @echo EXPORTS >>qlua.def
+@echo is_proxy_dll >>qlua.def
 @type temp_qlua.def >>qlua.def
 copy /Y qlua.def qlua_proxy\qlua.def
 copy /Y qlua_proxy.cpp qlua_proxy\dllmain.cpp
